@@ -16,12 +16,37 @@ function updateTimer() {
   document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
 }
 
+// Função para criar corações flutuantes no fundo
+function createFloatingHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('floating-heart');
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Entre 3s e 5s
+  heart.style.fontSize = Math.random() * 10 + 15 + 'px';
+  heart.style.opacity = Math.random() * 0.5 + 0.5;
+
+  document.body.appendChild(heart);
+
+  // Remove o elemento após a animação para não sobrecarregar o site
+  setTimeout(() => {
+    heart.remove();
+  }, 5000);
+}
+
 document.getElementById('magicButton').addEventListener('click', (e) => {
-  // Feedback visual no botão
+  // 1. Feedback visual no botão
   e.target.style.transform = "scale(0.95)";
   setTimeout(() => e.target.style.transform = "scale(1)", 100);
 
-  // Explosão de confetes (o código anterior de frame() continua aqui)
+  // 2. Inicia a música
+  const audio = document.getElementById('musica');
+  audio.play().catch(error => console.log("Erro ao tocar áudio:", error));
+
+  // 3. Chuva de corações contínua
+  setInterval(createFloatingHeart, 400);
+
+  // 4. Explosão de confetes
   const duration = 3 * 1000;
   const end = Date.now() + duration;
 
@@ -46,12 +71,10 @@ document.getElementById('magicButton').addEventListener('click', (e) => {
     }
   }());
 
+  // 5. Atualiza estado do botão
   e.target.innerText = "Você é o meu melhor presente! ❤️";
-  e.target.disabled = true; // Evita spam de confete
+  e.target.disabled = true;
   e.target.style.cursor = "default";
-
-  const audio = document.getElementById('musica');
-  audio.play().catch(error => console.log("O navegador bloqueou o autoplay:", error));
 });
 
 // Atualiza o timer a cada segundo
