@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love ❤️</title>
+  <link rel="stylesheet" href="assets/style/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@300;500&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <main id="app">
+    <section class="hero">
+      <h1 class="fade-in">Dani <span class="heart">&</span> Duda</h1>
+      <p class="subtitle">Voce me faz tao bem!</p>
+    </section>
+
+    <section class="counter-container">
+      <div id="timer">
+        <div class="time-block"><span id="days">00</span><label>Dias</label></div>
+        <div class="time-block"><span id="hours">00</span><label>Horas</label></div>
+        <div class="time-block"><span id="minutes">00</span><label>Minutos</label></div>
+        <div class="time-block"><span id="seconds">00</span><label>Segundos</label></div>
+      </div>
+      <p class="caption">Desde 24 de Agosto de 2023</p>
+    </section>
+
+    <button id="magicButton">Clique para uma surpresa</button>
+
+    <div class="music-player">
+      <audio id="musica" loop>
+        <source src="audio/dengo.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+      </audio>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>
