@@ -10,6 +10,7 @@ const playlist = [
   'audio/umsonhador.mp3',
   'audio/porvoce.mp3',
   'audio/vocemefaz.mp3',
+  'audio/sejapramim.mp3'
 ];
 
 function updateTimer() {
