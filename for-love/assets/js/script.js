@@ -1,5 +1,16 @@
-// Configuração da data (Mês é 0-indexed: Agosto = 7)
+// 1. Configuração da data (Mês é 0-indexed: Agosto = 7)
 const startDate = new Date(2023, 7, 24, 0, 0, 0);
+
+// 2. Lista de músicas para sorteio
+// Adicione ou remova nomes de arquivos conforme sua pasta 'audio'
+const playlist = [
+  'audio/dengo.mp3',
+  'audio/duasmetades.mp3',
+  'audio/trevotu.mp3',
+  'audio/umsonhador.mp3',
+  'audio/porvoce.mp3',
+  'audio/vocemefaz.mp3',
+];
 
 function updateTimer() {
   const now = new Date();
@@ -22,13 +33,12 @@ function createFloatingHeart() {
   heart.classList.add('floating-heart');
   heart.innerHTML = '❤️';
   heart.style.left = Math.random() * 100 + 'vw';
-  heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Entre 3s e 5s
+  heart.style.animationDuration = Math.random() * 2 + 3 + 's';
   heart.style.fontSize = Math.random() * 10 + 15 + 'px';
   heart.style.opacity = Math.random() * 0.5 + 0.5;
 
   document.body.appendChild(heart);
 
-  // Remove o elemento após a animação para não sobrecarregar o site
   setTimeout(() => {
     heart.remove();
   }, 5000);
@@ -39,8 +49,15 @@ document.getElementById('magicButton').addEventListener('click', (e) => {
   e.target.style.transform = "scale(0.95)";
   setTimeout(() => e.target.style.transform = "scale(1)", 100);
 
-  // 2. Inicia a música
+  // 2. Sorteio e Troca da Música
   const audio = document.getElementById('musica');
+  const source = audio.querySelector('source');
+
+  // Escolhe uma música aleatória da playlist
+  const randomMusic = playlist[Math.floor(Math.random() * playlist.length)];
+
+  source.src = randomMusic;
+  audio.load(); // Carrega o novo arquivo sorteado
   audio.play().catch(error => console.log("Erro ao tocar áudio:", error));
 
   // 3. Chuva de corações contínua
@@ -73,7 +90,7 @@ document.getElementById('magicButton').addEventListener('click', (e) => {
 
   // 5. Atualiza estado do botão
   e.target.innerText = "Você é o meu melhor presente! ❤️";
-  e.target.disabled = true;
+  e.target.disabled = false;
   e.target.style.cursor = "default";
 });
 
