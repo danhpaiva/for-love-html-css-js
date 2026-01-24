@@ -1,8 +1,7 @@
 // 1. Configuração da data (Mês é 0-indexed: Agosto = 7)
 const startDate = new Date(2023, 7, 24, 0, 0, 0);
 
-// 2. Lista de músicas para sorteio
-// Adicione ou remova nomes de arquivos conforme sua pasta 'audio'
+// 2. Playlist de músicas
 const playlist = [
   'audio/dengo.mp3',
   'audio/duasmetades.mp3',
@@ -12,6 +11,20 @@ const playlist = [
   'audio/vocemefaz.mp3',
   'audio/sejapramim.mp3'
 ];
+
+// 3. Lista de frases de mimo
+const mimos = [
+  "Você é o meu melhor presente! ❤️",
+  "Minha vida é mais colorida com você! ✨",
+  "Cada segundo ao seu lado é um sonho! ☁️",
+  "Você é a minha melhor escolha! 🌹",
+  "Obrigado por ser meu porto seguro! ⚓",
+  "Meu lugar favorito é dentro do seu abraço! 🤗",
+  "Te amo mais do que ontem e menos que amanhã! 💘",
+  "Você é o meu dengo favorito! 🥰"
+];
+
+let heartsStarted = false; // Trava para não duplicar o efeito de corações
 
 function updateTimer() {
   const now = new Date();
@@ -28,7 +41,6 @@ function updateTimer() {
   document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
 }
 
-// Função para criar corações flutuantes no fundo
 function createFloatingHeart() {
   const heart = document.createElement('div');
   heart.classList.add('floating-heart');
@@ -39,33 +51,35 @@ function createFloatingHeart() {
   heart.style.opacity = Math.random() * 0.5 + 0.5;
 
   document.body.appendChild(heart);
-
-  setTimeout(() => {
-    heart.remove();
-  }, 5000);
+  setTimeout(() => { heart.remove(); }, 5000);
 }
 
 document.getElementById('magicButton').addEventListener('click', (e) => {
-  // 1. Feedback visual no botão
+  // Feedback visual no botão
   e.target.style.transform = "scale(0.95)";
   setTimeout(() => e.target.style.transform = "scale(1)", 100);
 
-  // 2. Sorteio e Troca da Música
+  // 1. Sorteio de Música
   const audio = document.getElementById('musica');
   const source = audio.querySelector('source');
-
-  // Escolhe uma música aleatória da playlist
   const randomMusic = playlist[Math.floor(Math.random() * playlist.length)];
 
   source.src = randomMusic;
-  audio.load(); // Carrega o novo arquivo sorteado
-  audio.play().catch(error => console.log("Erro ao tocar áudio:", error));
+  audio.load();
+  audio.play().catch(error => console.log("Erro no áudio:", error));
 
-  // 3. Chuva de corações contínua
-  setInterval(createFloatingHeart, 400);
+  // 2. Sorteio de Frase (Mimo)
+  const fraseSorteada = mimos[Math.floor(Math.random() * mimos.length)];
+  e.target.innerText = fraseSorteada;
 
-  // 4. Explosão de confetes
-  const duration = 3 * 1000;
+  // 3. Inicia corações apenas uma vez
+  if (!heartsStarted) {
+    setInterval(createFloatingHeart, 400);
+    heartsStarted = true;
+  }
+
+  // 4. Explosão de confetes (sempre que clicar!)
+  const duration = 2 * 1000;
   const end = Date.now() + duration;
 
   (function frame() {
@@ -88,13 +102,8 @@ document.getElementById('magicButton').addEventListener('click', (e) => {
       requestAnimationFrame(frame);
     }
   }());
-
-  // 5. Atualiza estado do botão
-  e.target.innerText = "Você é o meu melhor presente! ❤️";
-  e.target.disabled = false;
-  e.target.style.cursor = "default";
 });
 
-// Atualiza o timer a cada segundo
+// Inicialização
 setInterval(updateTimer, 1000);
 updateTimer();
