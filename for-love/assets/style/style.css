@@ -144,3 +144,20 @@ button:hover {
     padding: 0 10px;
   }
 }
+
+.floating-heart {
+  position: fixed;
+  bottom: -50px;
+  color: #ff7675;
+  pointer-events: none;
+  z-index: -1;
+  /* Fica atrás do conteúdo */
+  animation: floatUp linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
