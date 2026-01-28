@@ -9,18 +9,29 @@ const playlist = [
   'audio/umsonhador.mp3',
   'audio/porvoce.mp3',
   'audio/vocemefaz.mp3',
-  'audio/sejapramim.mp3'
+  'audio/sejapramim.mp3',
+  'audio/coisalinda.mp3',
+  'audio/amorSemMedida.mp3',
+  'audio/pVcGuardeiOAmor.mp3'
 ];
 
 // 3. Lista de frases de mimo
 const mimos = [
   "Você é o meu melhor presente! ❤️",
+  "Lembro do dia que te conheci no Boulevard 🏬",
+  "Laicos ficou na nossa historia, ne??? 🎉",
   "Minha vida é mais colorida com você! ✨",
   "Cada segundo ao seu lado é um sonho! ☁️",
   "Você é a minha melhor escolha! 🌹",
   "Obrigado por ser meu porto seguro! ⚓",
   "Meu lugar favorito é dentro do seu abraço! 🤗",
-  "Te amo mais do que ontem e menos que amanhã! 💘",
+  "Te amo o tanto que voce ama praia... 🏖️",
+  "Tambem amo vc o tanto que voce ama chocolatudo... 🍫",
+  "Te amo o tanto que voce gosta de 🍔",
+  "Fico feliz só de pensar em você! 😊",
+  "Você ilumina meus dias mais sombrios! 🌞",
+  "Com você, cada momento é especial! 💖",
+  "Você é a razão do meu sorriso! 😄",
   "Você é o meu dengo favorito! 🥰"
 ];
 
