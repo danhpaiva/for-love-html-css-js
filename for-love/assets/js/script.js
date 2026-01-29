@@ -1,7 +1,5 @@
-// 1. Configuração da data (Mês é 0-indexed: Agosto = 7)
 const startDate = new Date(2023, 7, 24, 0, 0, 0);
 
-// 2. Playlist de músicas
 const playlist = [
   'audio/dengo.mp3',
   'audio/duasmetades.mp3',
@@ -15,7 +13,6 @@ const playlist = [
   'audio/pVcGuardeiOAmor.mp3'
 ];
 
-// 3. Lista de frases de mimo
 const mimos = [
   "Você é o meu melhor presente! ❤️",
   "Lembro do dia que te conheci no Boulevard 🏬",
@@ -32,7 +29,11 @@ const mimos = [
   "Você ilumina meus dias mais sombrios! 🌞",
   "Com você, cada momento é especial! 💖",
   "Você é a razão do meu sorriso! 😄",
-  "Você é o meu dengo favorito! 🥰"
+  "Você é o meu dengo favorito! 🥰",
+  "Te amo mais que brigadeiro! 🍬",
+  "Você é a melodia do meu coração! 🎶",
+  "Ao seu lado, tudo é melhor!",
+  "Você é meu sonho realizado! 🌟"
 ];
 
 let heartsStarted = false; // Trava para não duplicar o efeito de corações
